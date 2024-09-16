@@ -1,2 +1,0 @@
-#!/bin/sh
-exec codesign --force --deep --sign - "$1"
