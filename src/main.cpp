@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
     string filePath = "./links.conf";
     linkPairList links = derefLinkPairList(loadLinks(filePath));
     for (const auto& link : links) {
-        cout << "ln -s " << link.first << " " << link.second << endl;
+        cout << "link: (Source: " << link.first << " , Target: " << link.second << " )" << endl;
     };
     return 0;
 }
