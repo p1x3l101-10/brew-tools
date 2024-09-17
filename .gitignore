@@ -68,7 +68,9 @@ CMakeLists.txt.user*
 *.pyc
 
 # Binaries
-# --------
 *.dll
 *.exe
 
+# Build artifacts
+/build
+/.cache

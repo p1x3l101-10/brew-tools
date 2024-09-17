@@ -1,0 +1,10 @@
+macro( add_module type name )
+    file(GLOB_RECURSE source_files "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+    if ( ${type} STREQUAL "library" )
+        add_library( ${name} SHARED ${source_files} )
+    elseif ( ${type} STREQUAL "binary" )
+        add_executable( ${name} ${source_files} )
+    endif()
+    # TODO: Parse the simple texts files to add target_link_libraries accordingly
+endmacro()

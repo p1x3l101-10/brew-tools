@@ -1,14 +1,10 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.30)
+project("brew-tools")
 
-project(brew-tools LANGUAGES CXX)
+include(global.cmake)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_subdirectory(libhomebrewtools)
 
-add_executable(brew-tools main.cpp)
-
-include(GNUInstallDirs)
-install(TARGETS brew-tools
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+include_directories(libhomebrewtools/include)
+add_module(binary test)
+target_link_libraries(test homebrewtools)
