@@ -4,14 +4,12 @@
 #include <vector>
 #include <utility>
 
-using std::string;
-
 namespace homebrewTools {
-    typedef std::pair<string, string> linkPair;
+    typedef std::pair<std::string, std::string> linkPair;
     typedef std::vector<linkPair> linkPairList;
-    string derefPrefix(string path);
-    string unPrefix(string pathHeader, string prefixedPath);
-    linkPairList loadLinks(string filePath);
+    std::string derefPrefix(std::string path);
+    std::string unPrefix(std::string pathHeader, std::string prefixedPath);
+    linkPairList loadLinks(std::string filePath);
     linkPairList derefLinkPairList(linkPairList prefixedLinks);
 };
 

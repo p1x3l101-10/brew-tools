@@ -6,31 +6,27 @@
 #include <cstdlib>
 #include  "homebrewTools.hpp"
 
-using std::string;
-using homebrewTools::linkPairList;
-using std::pair;
-
 namespace linkFilesBin {
-    void fileBackup(string filePath);
-    void linkFile(string source, string target);
-    void removeLinks(linkPairList links);
-    void createLinks(linkPairList links);
-    void backupFile(string file, string backupPath);
-    void sortFile(string filePath, string sortedPath);
+    void fileBackup(std::string filePath);
+    void linkFile(std::string source, std::string target);
+    void removeLinks(homebrewTools::linkPairList links);
+    void createLinks(homebrewTools::linkPairList links);
+    void backupFile(std::string file, std::string backupPath);
+    void sortFile(std::string filePath, std::string sortedPath);
 
     /* Format for pair is as follows:
      * first: new
      * second: to remove
      */
-    pair<linkPairList,linkPairList> changedLinks(linkPairList oldLinks, linkPairList newLinks);
+    std::pair<homebrewTools::linkPairList,homebrewTools::linkPairList> changedLinks(homebrewTools::linkPairList oldLinks, homebrewTools::linkPairList newLinks);
 
     // Constants that are used in the binary
     struct constants {
-        const linkPairList defaultEmpty = {{"", ""}};
-        const string homebrewPrefix = std::getenv("HOMEBREW_PREFIX");
-        const string inputLinkFilePath = "./links.conf";
-        const string currentLinkFilePath = "./links.db";
-        const string oldLinkFilePath = "./links.db.old";
+        const homebrewTools::linkPairList defaultEmpty = {{"", ""}};
+        const std::string homebrewPrefix = std::getenv("HOMEBREW_PREFIX");
+        const std::string inputLinkFilePath = "./links.conf";
+        const std::string currentLinkFilePath = "./links.db";
+        const std::string oldLinkFilePath = "./links.db.old";
     };
 }
 
