@@ -8,7 +8,7 @@ string homebrewTools::derefPrefix(string path) {
     char prefix = path[1];
     switch ((int)prefix) {
         case (int)'r': // Root
-            output = unPrefix("/", path);
+            output = unPrefix("", path);
             break;
         case (int)'h': // Home
             output = unPrefix(getenv("HOME"), path);
