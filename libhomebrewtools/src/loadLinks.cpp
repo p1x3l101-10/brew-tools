@@ -11,7 +11,7 @@ using std::string;
 using std::make_pair;
 using homebrewTools::linkPairList;
 
-linkPairList loadLinks (string filePath) {
+linkPairList homebrewTools::loadLinks (string filePath) {
     linkPairList links;
     {
         string line;
