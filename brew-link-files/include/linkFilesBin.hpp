@@ -15,7 +15,8 @@ namespace linkFilesBin {
     void linkFile(string source, string target);
     void removeLinks(linkPairList links);
     void createLinks(linkPairList links);
-    linkPairList loadLinks(bool text, string configFilePath); 
+    void backupFile(string file, string backupPath);
+    void sortFile(string filePath, string sortedPath);
 
     /* Format for pair is as follows:
      * first: new
@@ -27,8 +28,9 @@ namespace linkFilesBin {
     struct constants {
         const linkPairList defaultEmpty = {{"", ""}};
         const string homebrewPrefix = std::getenv("HOMEBREW_PREFIX");
-        const string textLinkFilePath = homebrewPrefix + "/etc/homebrew/links.conf";
-        const string binLinkFilePath = "./links.db";
+        const string inputLinkFilePath = "./links.conf";
+        const string currentLinkFilePath = "./links.db";
+        const string oldLinkFilePath = "./links.db.old";
     };
 }
 
