@@ -42,6 +42,7 @@ function linkdel () {
 function fileback () {
   local linkfile="$1"
   local backuploc="$2"
+  mkdir -p "$(dirname "$backuploc")"
   if [[ -e $backuploc ]]; then
     rm $backuploc
   fi
