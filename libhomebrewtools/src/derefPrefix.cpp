@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <string>
 #include "homebrewTools.hpp"
 
@@ -15,6 +16,13 @@ string homebrewTools::derefPrefix(string path) {
             break;
         case (int)'p': // Homebrew Prefix
             output = unPrefix(getenv("HOMEBREW_PREFIX"), path);
+            break;
+        case (int)'a': // Application Support
+            {
+                string pathHeader = getenv("HOME");
+                pathHeader += "/Application Support";
+                output = unPrefix(pathHeader, path);
+            }
             break;
 
     };
