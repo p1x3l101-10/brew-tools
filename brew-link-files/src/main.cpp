@@ -1,12 +1,9 @@
-#include <iostream>
 #include <string>
 #include <utility>
 #include "homebrewTools.hpp"
 #include "linkFilesBin.hpp"
 
 using std::string;
-using std::cout;
-using std::endl;
 using std::pair;
 
 using homebrewTools::linkPairList;
