@@ -5,14 +5,19 @@ set(CMAKE_CXX_STANDARD 17)
 
 include(global.cmake)
 
+if(APPLE)
+  set(CMAKE_INSTALL_RPATH "@loader_path/../lib;@loader_path")
+elseif(UNIX)
+  set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
+endif()
+
 add_subdirectory(libhomebrewtools)
 add_subdirectory(brew-link-files)
 
 include(GNUInstallDirs)
-list( APPEND CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_LIBDIR} )
 install(
     TARGETS     homebrewtools brew-link-files
-    INCLUDES    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    INCLUDES    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/homebrewTools"
     ARCHIVE     DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY     DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME     DESTINATION ${CMAKE_INSTALL_BINDIR}
