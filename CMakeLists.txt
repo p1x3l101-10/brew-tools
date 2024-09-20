@@ -23,3 +23,10 @@ install(
     LIBRARY     DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME     DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+# Add bulk script
+install(
+    PROGRAMS    brew-link.bash
+    DESTINATION ${CMAKE_INSTALL_BINDIR}
+    RENAME      brew-link
+)
