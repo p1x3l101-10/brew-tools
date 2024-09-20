@@ -7,7 +7,6 @@ using std::string;
 using std::pair;
 
 using homebrewTools::linkPairList;
-using homebrewTools::linkPair;
 using homebrewTools::derefLinkPairList;
 
 int main(int argc, char* argv[]) {
