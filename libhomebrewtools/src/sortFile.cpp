@@ -1,4 +1,4 @@
-#include "linkFilesBin.hpp"
+#include "homebrewTools.hpp"
 #include <algorithm>
 #include <fstream>
 #include <iterator>
@@ -14,7 +14,7 @@ using std::getline;
 using std::copy;
 using std::ostream_iterator;
 
-void linkFilesBin::sortFile(string filePath, string sortedPath) {
+void homebrewTools::sortFile(string filePath, string sortedPath) {
     ifstream inputFile(filePath);
     ofstream outputFile(sortedPath);
 

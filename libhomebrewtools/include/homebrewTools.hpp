@@ -3,14 +3,33 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <cstdlib>
 
 namespace homebrewTools {
     typedef std::pair<std::string, std::string> linkPair;
-    typedef std::vector<linkPair> linkPairList;
+    typedef std::vector<homebrewTools::linkPair> linkPairList;
     std::string derefPrefix(std::string path);
     std::string unPrefix(std::string pathHeader, std::string prefixedPath);
-    linkPairList loadLinks(std::string filePath);
-    linkPairList derefLinkPairList(linkPairList prefixedLinks);
+    homebrewTools::linkPairList loadLinks(std::string filePath);
+    homebrewTools::linkPairList derefLinkPairList(homebrewTools::linkPairList prefixedLinks);
+    void fileBackup(std::string filePath);
+    void linkFile(std::string source, std::string target);
+    void removeLinks(homebrewTools::linkPairList links);
+    void createLinks(homebrewTools::linkPairList links);
+    void backupFile(std::string file, std::string backupPath);
+    void sortFile(std::string filePath, std::string sortedPath);
+
+    /* Format for pair is as follows:
+     * first: new
+     * second: to remove
+     */
+    std::pair<homebrewTools::linkPairList,homebrewTools::linkPairList> changedLinks(homebrewTools::linkPairList oldLinks, homebrewTools::linkPairList newLinks);
+
+    // Constants that are used in binaries
+    namespace constants {
+        const homebrewTools::linkPairList defaultEmpty = {{"", ""}};
+        const std::string homebrewPrefix = std::getenv("HOMEBREW_PREFIX");
+    };
 };
 
 #endif

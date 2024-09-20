@@ -1,4 +1,4 @@
-#include "linkFilesBin.hpp"
+#include "homebrewTools.hpp"
 #include <string>
 #include <fstream>
 
@@ -7,7 +7,7 @@ using std::ifstream;
 using std::ofstream;
 using std::ios;
 
-void linkFilesBin::backupFile(string file, string backupPath) {
+void homebrewTools::backupFile(string file, string backupPath) {
     ifstream input(file, ios::binary);
     ofstream output(backupPath, ios::binary);
 

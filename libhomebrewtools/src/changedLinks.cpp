@@ -1,4 +1,4 @@
-#include "linkFilesBin.hpp"
+#include "homebrewTools.hpp"
 #include "homebrewTools.hpp"
 #include <iterator>
 #include <vector>
@@ -15,7 +15,7 @@ using std::back_inserter;
 
 using homebrewTools::linkPairList;
 
-pair<linkPairList, linkPairList> linkFilesBin::changedLinks(linkPairList oldLinks, linkPairList newLinks) {
+pair<linkPairList, linkPairList> homebrewTools::changedLinks(linkPairList oldLinks, linkPairList newLinks) {
     sort(oldLinks.begin(), oldLinks.end());
     sort(newLinks.begin(),newLinks.end());
 

@@ -1,4 +1,4 @@
-#include "linkFilesBin.hpp"
+#include "homebrewTools.hpp"
 #include "homebrewTools.hpp"
 #include <ostream>
 #include <utility>
@@ -15,7 +15,7 @@ using filesystem::path;
 
 using homebrewTools::linkPairList;
 
-void linkFilesBin::createLinks(linkPairList links) {
+void homebrewTools::createLinks(linkPairList links) {
     for (const auto& link : links) {
         path source = link.first;
         path target = link.second;

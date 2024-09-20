@@ -1,4 +1,3 @@
-#include "linkFilesBin.hpp"
 #include "homebrewTools.hpp"
 #include <ostream>
 #include <utility>
@@ -14,7 +13,7 @@ using filesystem::path;
 
 using homebrewTools::linkPairList;
 
-void linkFilesBin::removeLinks(linkPairList links) {
+void homebrewTools::removeLinks(linkPairList links) {
     for (const auto& link : links) {
         path file = link.second;
         if (remove(file)) {
