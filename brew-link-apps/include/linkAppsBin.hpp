@@ -13,9 +13,8 @@ namespace linkAppsBin {
     namespace constants {
         const std::string globalAppDir = linkAppsBin::defaultEnv("HOMEBREW_APPLICATIONS_DIRECTORY", homebrewTools::constants::homebrewPrefix + "/Applications");
         const std::vector<std::string> supportedAppSubdirs = { // Where to search for apps under the appdir
-            "/",
-            "/Sideloaded",
-            "/WhiskyApps"
+            "",
+            "/Sideloaded"
         };
         const std::string fileDb = globalAppDir + "/.links.db";
         const std::string tmpFileDb = linkAppsBin::constants::fileDb + ".tmp";

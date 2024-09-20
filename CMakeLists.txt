@@ -17,15 +17,9 @@ add_subdirectory(brew-link-apps)
 
 include(GNUInstallDirs)
 install(
-    TARGETS     homebrewtools brew-link-files
+    TARGETS     homebrewtools brew-link-files brew-link-apps
     INCLUDES    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/homebrewTools"
     ARCHIVE     DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY     DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME     DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
-# Add the stupid script I haven't converted yet
-install(
-    PROGRAMS    brew-link-apps.bash
-    DESTINATION ${CMAKE_INSTALL_BINDIR}
-    RENAME      brew-link-apps
 )
