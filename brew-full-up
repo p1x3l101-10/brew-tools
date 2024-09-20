@@ -1,3 +1,0 @@
-#!/bin/sh
-$HOMEBREW_PREFIX/bin/brew update && \
-$HOMEBREW_PREFIX/bin/brew upgrade
