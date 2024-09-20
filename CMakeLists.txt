@@ -28,5 +28,5 @@ install(
 install(
     PROGRAMS    brew-link.bash
     DESTINATION ${CMAKE_INSTALL_BINDIR}
-    RENAME      brew-link
+    RENAME      brew-link-all
 )
