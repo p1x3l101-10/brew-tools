@@ -24,7 +24,7 @@ namespace linkFilesBin {
     struct constants {
         const homebrewTools::linkPairList defaultEmpty = {{"", ""}};
         const std::string homebrewPrefix = std::getenv("HOMEBREW_PREFIX");
-        const std::string inputLinkFilePath = homebrewPrefix + "/etc/links.conf";
+        const std::string inputLinkFilePath = homebrewPrefix + "/etc/homebrew/links.conf";
         const std::string currentLinkFilePath = homebrewPrefix + "/Library/.links.db";
         const std::string oldLinkFilePath = homebrewPrefix + "/Library/.links.db.old";
     };
