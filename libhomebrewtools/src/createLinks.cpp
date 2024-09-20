@@ -7,11 +7,10 @@
 
 using std::cout;
 using std::endl;
+using std::cerr;
 
-namespace filesystem = std::filesystem;
-using filesystem::create_symlink;
-using filesystem::create_directories;
-using filesystem::path;
+namespace fs = std::filesystem;
+using fs::path;
 
 using homebrewTools::linkPairList;
 
@@ -19,8 +18,12 @@ void homebrewTools::createLinks(linkPairList links) {
     for (const auto& link : links) {
         path source = link.first;
         path target = link.second;
-        create_directories(target.parent_path());
-        create_symlink(source, target);
-        cout << "( Link Source: '" << source.string() << "' Target: '" << target.string() << "' )" << endl;
+        try {
+            fs::create_directories(target.parent_path());
+            fs::create_symlink(source, target);
+            cout << "( Link Source: '" << source.string() << "' Target: '" << target.string() << "' )" << endl;
+        } catch (fs::filesystem_error err) {
+            cerr << "Error caught when linking files, manual resolution requied:" << endl << err.what() << endl;
+        }
     }
 }

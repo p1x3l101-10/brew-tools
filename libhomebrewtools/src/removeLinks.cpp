@@ -6,20 +6,28 @@
 
 using std::cout;
 using std::endl;
+using std::cerr;
 
-namespace filesystem = std::filesystem;
-using filesystem::remove;
-using filesystem::path;
+namespace fs = std::filesystem;
+using fs::path;
 
 using homebrewTools::linkPairList;
 
 void homebrewTools::removeLinks(linkPairList links) {
     for (const auto& link : links) {
         path file = link.second;
-        if (remove(file)) {
-            cout << "( Remove: '" << file.string() << "' )" << endl;
-        } else {
-            cout << "!!! ( Failed to remove :'" << file.string() << "' )" << endl;
+        try {
+            if (fs::remove(file)) {
+                cout << "( Remove: '" << file.string() << "' )" << endl;
+            } else {
+                throw;
+            }
+        } catch (fs::filesystem_error err) {
+            cerr << "Error caught when linking files, manual resolution requied:" << endl << err.what() << endl;
+        } catch (...) {
+            cerr << "Unknown error in 'libhomebrewtools/src/removeLinks.cpp', dumping working variables" << endl
+                << "    path file = " << file.string() << endl
+                << "Please report this error, continuing deletion..." << endl;
         }
     }
 }
