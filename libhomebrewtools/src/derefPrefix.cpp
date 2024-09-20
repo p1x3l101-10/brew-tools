@@ -20,7 +20,7 @@ string homebrewTools::derefPrefix(string path) {
         case (int)'a': // Application Support
             {
                 string pathHeader = getenv("HOME");
-                pathHeader += "/Application Support";
+                pathHeader += "/Library/Application Support";
                 output = unPrefix(pathHeader, path);
             }
             break;
