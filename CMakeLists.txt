@@ -13,6 +13,7 @@ endif()
 
 add_subdirectory(libhomebrewtools)
 add_subdirectory(brew-link-files)
+add_subdirectory(brew-link-apps)
 
 include(GNUInstallDirs)
 install(
