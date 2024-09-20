@@ -39,7 +39,11 @@ linkPairList linkAppsBin::generateAppLinks() {
                 // Generate output from found bundles
                 path bundle = entry.path();
                 string destination = getenv("HOME");
-                destination += "/Applications" + pathLet + "/" + base_name(bundle.string());
+                destination += "/Applications" + pathLet;
+                if (pathLet == "") { // Dont just splurge application links
+                    destination += "/Homebrew";
+                }
+                destination += "/" + base_name(bundle.string());
                 linkPair link = {bundle.string(), destination};
                 output.push_back(link);
             }
