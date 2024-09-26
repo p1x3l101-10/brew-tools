@@ -40,6 +40,7 @@ void homebrewTools::createLinks(linkPairList links) {
                              << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "' to resolve" << endl
                              << "   Make sure to move any important data before doing so" << endl;
                     }
+                    break;
                 }
                 default: {
                     cerr << "Unknown filesystem error caught, manual resolution requied:" << endl << err.what() << endl;
