@@ -18,6 +18,7 @@ namespace homebrewTools {
     void createLinks(homebrewTools::linkPairList links);
     void backupFile(std::string file, std::string backupPath);
     void sortFile(std::string filePath, std::string sortedPath);
+    void checkLinks(homebrewTools::linkPairList links, bool correctErrors = false, bool keepGoing = false);
 
     /* Format for pair is as follows:
      * first: new
