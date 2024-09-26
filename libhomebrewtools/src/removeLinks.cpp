@@ -27,7 +27,8 @@ void homebrewTools::removeLinks(linkPairList links) {
         } catch (...) {
             cerr << "Unknown error in 'libhomebrewtools/src/removeLinks.cpp', dumping working variables" << endl
                 << "    path file = " << file.string() << endl
-                << "Please report this error, continuing deletion..." << endl;
+                << "Please report this error!" << endl;
+            exit(255);
         }
     }
 }
