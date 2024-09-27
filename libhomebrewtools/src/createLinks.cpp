@@ -4,6 +4,7 @@
 #include <utility>
 #include <iostream>
 #include <filesystem>
+#include <sstream>
 
 using std::cout;
 using std::endl;
@@ -23,30 +24,32 @@ void homebrewTools::createLinks(linkPairList links) {
             fs::create_symlink(source, target);
             cout << "( Link Source: '" << source.string() << "' Target: '" << target.string() << "' )" << endl;
         } catch (fs::filesystem_error err) {
+            std::stringstream errprint;
             switch (err.code().value()) {
                 using std::errc;
                 case (int) errc::file_exists: {
-                    cerr << "WARN: File exists at: `" << target.string() << "`" << endl;
+                    errprint << "WARN: File exists at: `" << target.string() << "`" << endl;
                     if (fs::is_symlink(target)){
-                        cerr << "   File is already a symlink" << endl;
                         if (fs::read_symlink(target) == source) {
-                            cerr << "   Link is correct, you make safely ignore this error" << endl;
+                            errprint.clear(); // Wipe error message if link is already good
                         } else {
-                            cerr << "   Link exists, but does not point to the right location, manual resolution requierd" << endl
+                            errprint << "   Link exists, but does not point to the right location, manual resolution requierd" << endl
                                  << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "' to resolve" << endl;
                         }
                     } else {
-                        cerr << "   File is not a symlink, manual resolution requierd" << endl
+                        errprint << "   File is not a symlink, manual resolution requierd" << endl
                              << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "' to resolve" << endl
                              << "   Make sure to move any important data before doing so" << endl;
                     }
                     break;
                 }
                 default: {
-                    cerr << "Unknown filesystem error caught, manual resolution requied:" << endl << err.what() << endl;
-                    cerr << "FS Error code \"" << err.code().message() << "\"" << endl;
+                    errprint << "Unknown filesystem error caught, manual resolution requied:" << endl << err.what() << endl;
+                    errprint << "FS Error code \"" << err.code().message() << "\"" << endl;
                 }
             }
+            cerr << errprint.str();
+            errprint.clear(); // Remove leftover data after printing the error
         } catch (...) {
             cerr << "Unkown error caught in `libhomebrewtools/src/createLinks.cpp` dumping working variables..." << endl
                  << "   path source = " << source << endl
