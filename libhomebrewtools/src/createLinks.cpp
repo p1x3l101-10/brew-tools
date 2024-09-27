@@ -34,12 +34,12 @@ void homebrewTools::createLinks(linkPairList links) {
                             errprint.clear(); // Wipe error message if link is already good
                         } else {
                             errprint << "   Link exists, but does not point to the right location, manual resolution requierd" << endl
-                                 << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "' to resolve" << endl;
+                                     << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "'` to resolve" << endl;
                         }
                     } else {
                         errprint << "   File is not a symlink, manual resolution requierd" << endl
-                             << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "' to resolve" << endl
-                             << "   Make sure to move any important data before doing so" << endl;
+                                 << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "' to resolve" << endl
+                                 << "   Make sure to move any important data before doing so" << endl;
                     }
                     break;
                 }
