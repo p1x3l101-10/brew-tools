@@ -7,8 +7,8 @@
 namespace linkFilesBin {
     namespace constants {
         const std::string inputLinkFilePath = homebrewTools::constants::homebrewPrefix + "/etc/homebrew/links.conf";
-        const std::string currentLinkFilePath = homebrewTools::constants::homebrewPrefix + "/Library/.links.db";
-        const std::string oldLinkFilePath = homebrewTools::constants::homebrewPrefix + "/Library/.links.db.old";
+        const std::string currentLinkFilePath = homebrewTools::constants::homebrewPrefix + "/.links.db";
+        const std::string oldLinkFilePath = homebrewTools::constants::homebrewPrefix + "/.links.db.old";
     };
 }
 
