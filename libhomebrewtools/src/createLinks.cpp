@@ -31,7 +31,7 @@ void homebrewTools::createLinks(linkPairList links) {
                     errprint << "WARN: File exists at: `" << target.string() << "`" << endl;
                     if (fs::is_symlink(target)){
                         if (fs::read_symlink(target) == source) {
-                            errprint.clear(); // Wipe error message if link is already good
+                            errprint.str(""); // Wipe error message if link is already good
                         } else {
                             errprint << "   Link exists, but does not point to the right location, manual resolution requierd" << endl
                                      << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "'` to resolve" << endl;
@@ -49,7 +49,7 @@ void homebrewTools::createLinks(linkPairList links) {
                 }
             }
             cerr << errprint.str();
-            errprint.clear(); // Remove leftover data after printing the error
+            errprint.str(""); // Remove leftover data after printing the error
         } catch (...) {
             cerr << "Unkown error caught in `libhomebrewtools/src/createLinks.cpp` dumping working variables..." << endl
                  << "   path source = " << source << endl
