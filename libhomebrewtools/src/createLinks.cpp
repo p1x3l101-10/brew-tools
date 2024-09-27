@@ -49,7 +49,6 @@ void homebrewTools::createLinks(linkPairList links) {
                 }
             }
             cerr << errprint.str();
-            errprint.str(""); // Remove leftover data after printing the error
         } catch (...) {
             cerr << "Unkown error caught in `libhomebrewtools/src/createLinks.cpp` dumping working variables..." << endl
                  << "   path source = " << source << endl
