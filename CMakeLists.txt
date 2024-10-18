@@ -1,32 +1,19 @@
 cmake_minimum_required(VERSION 3.30)
 project("brew-tools")
+include(cmake-libs/all)
 
-set(CMAKE_CXX_STANDARD 17)
-
-include(global.cmake)
-
-if(APPLE)
-  set(CMAKE_INSTALL_RPATH "@loader_path/../lib;@loader_path")
-elseif(UNIX)
-  set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib:$ORIGIN/")
-endif()
-
-add_subdirectory(libhomebrewtools)
-add_subdirectory(brew-link-files)
-add_subdirectory(brew-link-apps)
-
-include(GNUInstallDirs)
-install(
-    TARGETS     homebrewtools brew-link-files brew-link-apps
-    INCLUDES    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/homebrewTools"
-    ARCHIVE     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    LIBRARY     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME     DESTINATION ${CMAKE_INSTALL_BINDIR}
+build(
+  STATIC_LIBRARY homebrewtools
 )
 
-# Add bulk script
-install(
-    PROGRAMS    brew-link.bash
-    DESTINATION ${CMAKE_INSTALL_BINDIR}
-    RENAME      brew-link-all
+build(
+  BINARY brew-link-files
+  LIBRARIES homebrewtools
+  INSTALL_TARGET
+)
+
+build(
+  BINARY brew-link-apps
+  LIBRARIES homebrewtools
+  INSTALL_TARGET
 )
