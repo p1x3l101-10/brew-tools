@@ -18,7 +18,7 @@ void homebrewTools::removeLinks(linkPairList links) {
         path file = link.second;
         try {
             if (fs::remove(file)) {
-                cout << "( Remove: '" << file.string() << "' )" << endl;
+                cout << "Removed '" << file.string() << "'" << endl;
             } else {
                 throw;
             }

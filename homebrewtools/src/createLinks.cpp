@@ -22,7 +22,7 @@ void homebrewTools::createLinks(linkPairList links) {
         try {
             fs::create_directories(target.parent_path());
             fs::create_symlink(source, target);
-            cout << "( Link Source: '" << source.string() << "' Target: '" << target.string() << "' )" << endl;
+            cout << "Created symlink '" << source.string() << "' → '" << target.string() << "'" << endl;
         } catch (fs::filesystem_error err) {
             std::stringstream errprint;
             switch (err.code().value()) {
@@ -38,7 +38,7 @@ void homebrewTools::createLinks(linkPairList links) {
                         }
                     } else {
                         errprint << "   File is not a symlink, manual resolution requierd" << endl
-                                 << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "' to resolve" << endl
+                                 << "   Please run `ln -sf '" << source.string() << "' '" << target.string() << "'` to resolve" << endl
                                  << "   Make sure to move any important data before doing so" << endl;
                     }
                     break;
