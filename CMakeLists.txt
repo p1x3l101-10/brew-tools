@@ -3,7 +3,7 @@ project("brew-tools")
 include(cmake-libs/all)
 
 build(
-  STATIC_LIBRARY homebrewtools
+  SHARED_LIBRARY homebrewtools
 )
 
 build(
