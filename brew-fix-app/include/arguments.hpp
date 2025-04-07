@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <algorithm>
 
 namespace arguments {
   using std::vector,std::string,std::map;
@@ -33,6 +34,9 @@ namespace arguments {
             if (!name.empty() && !content.empty()) {
               argm.insert({name, content});
             }
+          }
+          if (std::find(argv.begin(), argv.end(), "--help") != argv.end()) {
+            argm.insert({"help", ""}); // Detect help
           }
         }
       }

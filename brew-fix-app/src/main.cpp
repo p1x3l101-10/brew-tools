@@ -22,8 +22,23 @@ using bp::search_path;
 using bp::ipstream;
 
 int main(int argc, char** argv) {
-  // Find app
   arguments::arguments args(argc, argv);
+
+  if (args.map().contains("help")) {
+    // Send a help message
+    cout << args.vector().at(0) << ": Usage\n"
+         << "\n"
+         << "\t--app=/path/to/app.app" << "\t- The path to the application bundle." << "\n"
+         << "\t--help" << "\t\t\t- This help message." << endl;
+    return 0;
+  }
+
+  // Ensure we have the needed args
+  if (! args.map().contains("app")) {
+    cout << "Appbundle needed, see `--help`" << endl;
+    return 1;
+  }
+  // Find app
   path appBundle = args.map()["app"];
 
   // Fix refs to '~'
