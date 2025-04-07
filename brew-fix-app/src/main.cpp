@@ -62,4 +62,5 @@ int main(int argc, char** argv) {
   child sign(search_path("codesign"), signArgs);
   sign.wait();
   cout << "Signed bundle" << endl;
+  return 0;
 }
